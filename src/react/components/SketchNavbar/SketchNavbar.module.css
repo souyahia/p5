@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  box-shadow: #000000 0 -10px 25px 4px;
+  z-index: 1;
+}
+
+.initial {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.backButton {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  margin: 0 20px 0 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backButton > img {
+  width: 30px;
+}
+
+.backButton:hover > img {
+  filter: brightness(70%);
+}
+
+.backButton:active > img {
+  filter: brightness(60%);
+}
+
+.name {
+  font-size: 25px;
+  font-weight: bold;
+  margin-left: 20px;
+}
