@@ -2,6 +2,7 @@ import p5 from 'p5';
 import { Dimensions } from '../universe';
 import { ComponentType } from 'react';
 import { InteractionSystem } from '../universe/interactions';
+import { FontLoader } from './fonts';
 
 const CANVAS_PADDING = 30;
 
@@ -20,6 +21,7 @@ export abstract class Sketch {
   protected container: HTMLDivElement | null = null;
   protected p: p5 | null = null;
   protected interactionSystem: InteractionSystem | null = null;
+  protected fonts: FontLoader | null = null;
   private _width: number | null = null;
   private _height: number | null = null;
 
@@ -46,6 +48,10 @@ export abstract class Sketch {
 
   protected get sketchFn(): (p: p5) => void {
     return (p: p5) => {
+      p.preload = () => {
+        this.preload(p);
+      };
+
       p.setup = () => {
         this.setup(p);
       };
@@ -74,6 +80,12 @@ export abstract class Sketch {
         this.mouseDragged(p, event as MouseEvent);
       };
     };
+  }
+
+  protected preload(p: p5): void {
+    if (this.fonts) {
+      this.fonts.loadFonts((font) => p.loadFont(font));
+    }
   }
 
   protected setup(p: p5): void {

@@ -1,5 +1,10 @@
 import { Vector } from 'p5';
 
+export interface Coords {
+  x: number;
+  y: number;
+}
+
 export interface Dimensions {
   width: number;
   height: number;
